@@ -15,27 +15,29 @@ echo "Updating packages....."
 for file in "$source"/*/*-pkg.group; do
   filename=$(basename $file)
   dir=$(dirname $file)
+  pkgdir="$pkgloc/$filename"
   if [[ -f "$file" ]]; then
-   if ! [ -d "$pkgloc/$filename" ]; then
+   if ! [ -d $pkgdir ]; then
      echo "Directory not found, assuming new package pack....."
      cd $pkgloc
      echo "Initializing git repo inside of $pkgloc$filename....."
      INIT=$(git init "$filename")
      echo "$INIT"
+     cd $filename
    fi
-   cd $pkgloc
+   cd $pkgdir
    trufn="${source/filename/}"
    appendix="${filename}"
    sourcef="$dir${dir:14}.source"
    echo "Reading $sourcef....."
    author=$(sed -n '1p' "$sourcef")
    echo "Root URL is $author....."
-   pack=$(sed -n '1p' "$file")
-   echo "Pack is $pack....."
-   url="$author/$pack"
-   echo "Pulling $pack"
-   GIT=$(git pull $url) # pull repo that is located on the first line of it
-   echo "$GIT" # show verbose of git pull
+   while IFS= read -r line; do
+    pack=$line
+    url="$author/$pack"
+    GIT=$(git pull $url)
+    echo "$GIT"
+   done < $file
 fi
 echo "Finished updating GitPackages! Have fun!"
 done
