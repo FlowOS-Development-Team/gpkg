@@ -24,7 +24,7 @@ else
  INIT=$(git init $1)
  echo "$INIT"
  echo "Folder created for $1 under the contributor $2....."
- cd "$source"
+ cd "$source/$"
  echo "Creating source file....."
  echo $2 > "$1.source"
 fi

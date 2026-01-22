@@ -10,15 +10,16 @@ else
  cd $source
  mkdir "$1"
  echo "Folder created for new package group....."
- cd "$1"
+ cd "$1" || error "gpadd" "cd"
  echo "Creating source file....."
+ if [[ "$1" == !*"-pkg" ]]; then $truef="$1-pkg" else $truef="$1"
  echo $2 > "$1.source"
  echo "Creating package group folder....."
- if ! [ -d $1 ]; then
+ if ! [ -d $truef ]; then
      echo "Directory not found, assuming new package pack....."
      cd $pkgloc
-     mkdir $1
+     mkdir $truef.group
      echo "Package pack created, continuing....."
-     cd $1
+     cd 
  fi
 fi
