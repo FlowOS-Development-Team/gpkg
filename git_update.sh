@@ -6,25 +6,26 @@ pkgtext=".group"
 # Use every file located in the defined source directory; Default is /etc/update.d
 
 count=$(comm -12 <(find $source -name "*-pkg.group" -exec basename {} \; | sort) <(find $pkgloc -name "*-pkg.group" -exec basename {} \; | sort) | wc -l)
-
+total=$(find $source -name "*-pkg.group" -exec basename {} \; | sort |  wc -l)
 echo "Commencing update of GitPKGS....."
 echo "Scanning $source please wait....."
 echo "Found $count packages present in $source and $pkgloc....."
-echo "Packages refrenced in $source"
+echo "$total refrenced in $source"
 echo "Updating packages....."
-for file in "$source"/*; do
+for file in "$source"/*/*-pkg.group; do
   filename=$(basename $file)
-  dir=$(dirname "$file")
-  if [[ -f "$file" && "$(basename "$file")" == *-pkg.group ]]; then
-   if ! [ -d "/usr/pkg/$filename" ]; then
+  dir=$(dirname $file)
+  if [[ -f "$file" ]]; then
+   if ! [ -d "$pkgloc/$filename" ]; then
      echo "Directory not found, assuming new package pack....."
      cd $pkgloc
-     echo "Initializing git repo inside of $pkgloc/$filename....."
-     INIT=$(git init "$dir/$filename")
-   fi;
-   cd "$dir/$filename" # cd into directory of pkg pack
-   sourcef="$dir/.source"
-   echo "Reading $source....."
+     echo "Initializing git repo inside of $pkgloc$filename....."
+     INIT=$(git init "$filename")
+   fi
+   trufn="${filename/-pkg.group/}"
+   cd "$pkgloc$filename" # cd into directory of pkg pack
+   sourcef="$dir$truefn$truefn.source"
+   echo "Reading $sourcef....."
    author=$(sed -n '1p' '$sourcef')
    echo "Root URL is $author....."
    pack=$(sed -n '1p' '$file')
