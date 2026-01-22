@@ -1,7 +1,7 @@
 warning() {
   echo "WARNING: $*" 1>&2
 }
-source=/etc/update.d/
-pkgloc=/usr/pkg/
-pkgtext=".group"
-installfile="install.sh"
+export source=/etc/update.d/
+export pkgloc=/usr/pkg/
+export pkgtext=".group"
+export installfile="install.sh"
