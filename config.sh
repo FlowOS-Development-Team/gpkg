@@ -4,7 +4,7 @@ warning() {
 }
 
 error() {
-  echo "$1: There was an problem while trying to execute $2 on line $LINENO" >&2
+  echo "$1: There was an problem while during $2 on line $3, please report this to the gpkg issue board if you think this is a bug." >&2
 }
 #init {
 #cd $2
