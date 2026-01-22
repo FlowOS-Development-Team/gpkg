@@ -1,5 +1,5 @@
 #!/bin/bash
-source "./config.sh"
+source "/etc/gpkg/env.sh"
 # Will replace these manual deprecated variables with a var file soon!
 # Use every file located in the defined source directory; Default is /etc/update.d
 

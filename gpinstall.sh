@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./config.sh
+source "/etc/gpkg/env.sh"
 
 if [ -z "$1" ]; then
  echo "gpinstall: gitpkg installer requires a name" >&2
