@@ -20,9 +20,8 @@ for file in "$source"/*/*-pkg.group; do
    if ! [ -d $pkgdir ]; then
      echo "Directory not found, assuming new package pack....."
      cd $pkgloc
-     echo "Initializing git repo inside of $pkgloc$filename....."
-     INIT=$(git init "$filename")
-     echo "$INIT"
+     mkdir $filename
+     echo "Package pack created, continuing....."
      cd $filename
    fi
    cd $pkgdir
@@ -31,8 +30,12 @@ for file in "$source"/*/*-pkg.group; do
    sourcef="$dir${dir:14}.source"
    echo "Reading $sourcef....."
    author=$(sed -n '1p' "$sourcef")
-   echo "Root URL is $author....."
+   echo "Contributor is $author....."
    while IFS= read -r line; do
+    if ! [ -d $line ]; then
+       INIT=$(git init "$line")
+       cd "$line"
+    fi
     pack=$line
     url="$author/$pack"
     GIT=$(git pull $url)
