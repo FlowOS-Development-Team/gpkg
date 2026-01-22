@@ -2,6 +2,8 @@
 source=/etc/update.d/
 pkgloc=/usr/pkg/
 pkgtext=".group"
+installfile="install.sh"
+source "./config.sh"
 # Will replace these manual deprecated variables with a var file soon!
 # Use every file located in the defined source directory; Default is /etc/update.d
 
@@ -44,8 +46,15 @@ for file in "$source"/*/*-pkg.group; do
     cd $line
     GIT=$(git pull $url)
     echo "$GIT"
+#if there is a post install file run in; otherwise throw an warning
+   if [ -f $installfile ]; then
+     echo "Install script found, installing $pack"
+     bash $installfile
+   else
+    warning "Install script not found, please double check the repo you are using is supported and/or tell the developer!"
     cd $pkgdir
-   done < $file
+   fi 
+  done < $file
 fi
 echo "Finished updating GitPackages! Have fun!"
 done
