@@ -13,4 +13,12 @@ else
  cd "$1"
  echo "Creating source file....."
  echo $2 > "$1.source"
+ echo "Creating package group folder....."
+ if ! [ -d $1 ]; then
+     echo "Directory not found, assuming new package pack....."
+     cd $pkgloc
+     mkdir $1
+     echo "Package pack created, continuing....."
+     cd $1
+ fi
 fi
