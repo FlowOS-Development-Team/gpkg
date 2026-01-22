@@ -21,7 +21,9 @@ for file in "$source"/*/*-pkg.group; do
      cd $pkgloc
      echo "Initializing git repo inside of $pkgloc$filename....."
      INIT=$(git init "$filename")
+     echo "$INIT"
    fi
+   cd $pkgloc
    trufn="${source/filename/}"
    appendix="${filename}"
    sourcef="$dir${dir:14}.source"
