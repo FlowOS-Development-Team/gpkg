@@ -22,13 +22,13 @@ for file in "$source"/*/*-pkg.group; do
      echo "Initializing git repo inside of $pkgloc$filename....."
      INIT=$(git init "$filename")
    fi
-   trufn="${filename/-pkg.group/}"
-   cd "$pkgloc$filename" # cd into directory of pkg pack
-   sourcef="$dir$truefn$truefn.source"
+   trufn="${source/filename/}"
+   appendix="${filename}"
+   sourcef="$dir${dir:14}.source"
    echo "Reading $sourcef....."
-   author=$(sed -n '1p' '$sourcef')
+   author=$(sed -n '1p' "$sourcef")
    echo "Root URL is $author....."
-   pack=$(sed -n '1p' '$file')
+   pack=$(sed -n '1p' "$file")
    echo "Pack is $pack....."
    url="$author/$pack"
    echo "Pulling $pack"
