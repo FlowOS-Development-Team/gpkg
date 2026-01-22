@@ -34,12 +34,16 @@ for file in "$source"/*/*-pkg.group; do
    while IFS= read -r line; do
     if ! [ -d $line ]; then
        INIT=$(git init "$line")
+       echo=$INIT
        cd "$line"
+       cd $pkgdir
     fi
+    cd $pkgdir
     pack=$line
     url="$author/$pack"
     GIT=$(git pull $url)
     echo "$GIT"
+    cd $pkgdir
    done < $file
 fi
 echo "Finished updating GitPackages! Have fun!"
