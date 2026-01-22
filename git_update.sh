@@ -41,6 +41,7 @@ for file in "$source"/*/*-pkg.group; do
     cd $pkgdir
     pack=$line
     url="$author/$pack"
+    cd $line
     GIT=$(git pull $url)
     echo "$GIT"
     cd $pkgdir
