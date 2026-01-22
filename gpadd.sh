@@ -17,7 +17,7 @@ else
  fi
  cd "$1" || error "gpadd" "cd" "$LINENO" exit;
  echo "Creating source file....."
- if [[ "$1" == !*"-pkg" ]]; then $truef="$1-pkg"; fi
+ if [[ !*"-pkg" == "$1" ]]; then $truef="$1-pkg"; fi
  if [[ -f !"$1.source" ]]; then echo $2 > "$1.source" else echo "Source manifest already exists for $1, if this is a mistake please remove $1.source from its directory at $source" || error "gpadd" "creating the source file" exit; fi 
  echo "Creating package group folder....."
  if ! [ -d "$truef" ]; then
