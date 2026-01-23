@@ -4,7 +4,9 @@
 # Initialize environment
 source /etc/gpkg/env.sh
 is_root
-info { usage "gprm" "-f" "package-group" "package1" >&2 } // define usage function
+info() { 
+    usage "gprm" "-f" "package-group" "package1" >&2 
+ } # define usage function
 #helpext to be updated in a later beta version when there is a uni bin 
 # Load flags
 while getops "f" flag; do
