@@ -4,7 +4,7 @@
 # GPKG Global Functions -----
 usage() {
   echo "Usage: $1 [$2] <$3> <$4> [package2 ...]" #format is Usage: command [optional args] <required arg1> <required arg2>.... [additional optional args]
-  if [ -n "$5" ]; then
+  if [ -z !"$5" ]; then
     echo -e "\n" # if there is additional usage info create a new line to seperate
     echo "$5" # print the additional usage info provided by the args
   fi
