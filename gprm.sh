@@ -5,3 +5,4 @@ if [ -z "$1" ]; then
 elif [ -z "$2" ]; then
  echo "gprm: gitpkg remover requires a pack-group" >&2
 else
+fi
