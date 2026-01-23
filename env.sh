@@ -29,7 +29,7 @@ yesno() {
   done # simple yes/no prompt function
 }
 error() {
-  echo "$1: There was an problem while $1 during $2 on line $3, please report this to the gpkg issue board if you think this is a bug." >&2
+  echo "$1: There was an problem while $1 while $2 on line $3, please report this to the gpkg issue board if you think this is a bug." >&2
   if [ -n "$4" ]; then
     echo "Additional info: $4" >&2
   fi
