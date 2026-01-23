@@ -33,7 +33,6 @@ error() {
   if [ -n "$4" ]; then
     echo "Additional info: $4" >&2
   fi
-  exit 1;
 } # error handler used globally 
 remove() {
  rm $1 $2
