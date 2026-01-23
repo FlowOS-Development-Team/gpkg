@@ -35,7 +35,8 @@ error() {
   fi
 } # error handler used globally 
 remove() {
- rm $1 $2
+ rm $1 $2 || errory=1
+ 
 } # simple remove function for gprm and cleanup scripts
 
 

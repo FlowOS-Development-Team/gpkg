@@ -36,7 +36,8 @@ else
         echo "Are you sure you want to delete $pkg? This action cannot be undone."
         #code yn code
         echo "Removing package $pkg from group $group..." 
-        remove "-f" "$pkg" || error "gprm" "trying to delete $pkg" "36" "Try and check to see if you spelled the package group (and) or package name correctly?" exit 1; 
+        remove "-f" "$pkg"
+        if [ "$errory" == "y" ]; then { error "gprm" "trying to delete $pkg" "36" "Try and check to see if you spelled the package group (and) or package name correctly?" exit 1 fi;} 
     done
 fi
 exit 0;
