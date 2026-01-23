@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail; shopt -s inherit_errexit nullglob compat"${BASH_COMPAT=42}"
 source "/etc/gpkg/env.sh"
 if [ -z "$1" ]; then
  echo "gpinstall: gitpkg installer requires a name" >&2
