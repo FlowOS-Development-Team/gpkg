@@ -8,6 +8,16 @@ is_root() {
     exit 1
   fi
 }
+yesno() {
+  while true; do
+    read -p "$1 [y/n]: " yn
+    case $yn in
+      [Yy]* ) return 0;;
+      [Nn]* ) return 1;;
+      * ) echo "Please answer (Y)es or (N)o, other answers are not valid.";;
+    esac
+  done
+}
 error() {
   echo "$1: There was an problem while during $2 on line $3, please report this to the gpkg issue board if you think this is a bug." >&2
 }
