@@ -1,6 +1,6 @@
 #!/bin/bash
 source "/etc/gpkg/env.sh"
-
+is_root()
 if [ -z "$1" ]; then
  echo "gpinstall: gitpkg installer requires a name" >&2
 elif [ -z "$2" ]; then

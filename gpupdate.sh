@@ -2,7 +2,7 @@
 source "/etc/gpkg/env.sh"
 # Will replace these manual deprecated variables with a var file soon!
 # Use every file located in the defined source directory; Default is /etc/update.d
-
+is_root()
 count=$(comm -12 <(find $source -name "*-pkg.group" -exec basename {} \; | sort) <(find $pkgloc -name "*-pkg.group" -exec basename {} \; | sort) | wc -l)
 total=$(find $source -name "*-pkg.group" -exec basename {} \; | sort |  wc -l)
 echo "Commencing update of GitPKGS....."
