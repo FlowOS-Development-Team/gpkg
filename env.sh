@@ -1,4 +1,6 @@
 #!/bin/bash
+# Functions and variables for GITPKG scripts
+
 warning() {
   echo "WARNING: $*" 1>&2
 }
@@ -36,3 +38,5 @@ pkgloc="/usr/pkg/"
 pkgtext=".group"
 installfile="install.sh"
 
+# Copyright 2026 Elias Stinson (favoriteone) and the FlowOS Development team
+# under the GNU GPL v3 license or later, see LICENSE for details.
