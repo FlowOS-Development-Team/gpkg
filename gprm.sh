@@ -23,11 +23,11 @@ fi
 if [ -z "$1" ]; then
  echo "gprm: gitpkg remover requires a package group to delete from" >&2
  info
- quit; 
+ exit 1; 
 elif [ -z "$2" ]; then
  echo "gprm: gitpkg remover requires (a) package(s) to remove file from" >&2
  info
- quit;
+ exit 1;
 else
     group="$1"
     echo "Starting gpkg package removal......"
@@ -40,3 +40,4 @@ else
     done
 fi
 fi
+exit 0;
