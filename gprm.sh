@@ -4,7 +4,7 @@
 # Initialize environment
 source /etc/gpkg/env.sh
 is_root
-usage
+exec usage
 info() {
      "gprm" "-f" "package-group" "package1"
  } # define usage function
