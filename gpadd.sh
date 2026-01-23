@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail; shopt -s inherit_errexit nullglob compat"${BASH_COMPAT=42}"
 source "/etc/gpkg/env.sh"
-truef=$1
 is_root()
 if [ -z "$1" ]; then
  echo "gpadd: gitpkg group requires a name" >&2
@@ -18,16 +17,16 @@ else
  fi
  cd "$1" || error "gpadd" "cd" "$LINENO" exit;
  echo "Creating source file....."
- if [[ !*"-pkg" == "$1" ]]; then $truef="$1-pkg"; fi
+ if [[ !*"-pkg" == "$1" ]]; then $$1="$1-pkg"; fi
  if [[ -f !"$1.source" ]]; then echo $2 > "$1.source" else echo "Source manifest already exists for $1, if this is a mistake please remove $1.source from its directory at $source" || error "gpadd" "creating the source file" exit; fi 
  echo "Creating package group folder....."
- if ! [ -d "$truef" ]; then
+ if ! [ -d "$$1" ]; then
      echo "Directory not found, assuming new package pack....."
      cd "$pkgloc" || error "gpadd" "cd" "$LINENO" exit;
-     if [[ -d !"$truef.group" ]]; then  mkdir $truef.group || error "gpadd" "mkdir" "$LINENO" exit; fi
+     if [[ -d !"$$1.group" ]]; then  mkdir $$1.group || error "gpadd" "mkdir" "$LINENO" exit; fi
      echo "Package pack created, continuing....."
  else
-   echo "Package pack already exists for $1, if this is a mistake please remove $truef from its directory at $pkgloc"
+   echo "Package pack already exists for $1, if this is a mistake please remove $$1 from its directory at $pkgloc"
  fi
 fi
 echo "GPKG has finished adding a group for $1, if it does not appear, please use this command again, or submit a bug-report on the gpkg error board on GitHub."
