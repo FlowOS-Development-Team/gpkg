@@ -19,7 +19,7 @@ if [[ $# -eq 0 ]]; then
            exit 1 ;;
      esac
     done
-elif [[ $# -eq 1]] then
+elif [[ $# -eq 1 ]]; then
     arg=true
 else
 if [ -z "$1" ]; then
