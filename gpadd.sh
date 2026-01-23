@@ -3,10 +3,11 @@ source "/etc/gpkg/env.sh"
 is_root
 if [ -z "$1" ]; then
  echo "gpadd: gitpkg group requires a name" >&2
+ exit;
 elif [ -z "$2" ]; then
  echo "gpadd: gitpkg group requires a contributor url" >&2
+ exit;
 else
-set -euo pipefail; shopt -s inherit_errexit nullglob compat"${BASH_COMPAT=42}"
  echo "Adding package group to $source, this should only take a second....."
  cd $source || error "gpadd" "cd" "$LINENO" exit;
  if [ -d !"$1" ]; then
