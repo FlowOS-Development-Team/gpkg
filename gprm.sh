@@ -10,6 +10,6 @@ else
     echo "Starting gpkg package removal......"
     shift
     for pkg in "$@"; do
-        echo "Removing package '$pkg' from group '$group'..."
+        echo "Removing package $pkg from group $group..."
     fi
 fi
