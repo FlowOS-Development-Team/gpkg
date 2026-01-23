@@ -13,7 +13,7 @@ while getops "f" flag; do
     case "$flag" in
         f) FORCE="true" ;;
         ?) info;
-        *) 
+        *) info;
            exit 1 ;;
     esac
 done
