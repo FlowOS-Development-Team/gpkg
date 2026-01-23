@@ -9,7 +9,7 @@ info() {
  } # define usage function
 #helpext to be updated in a later beta version when there is a uni bin 
 # Load flags
-while getops "f" flag; do
+while getopt "f" flag; do
     case "$flag" in
         f) FORCE="true" ;;
         ?) info ;;
