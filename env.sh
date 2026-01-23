@@ -2,6 +2,13 @@
 # Functions and variables for GITPKG scripts
 
 # GPKG Global Functions -----
+usage() {
+  echo "Usage: $1 [$2] <$3> <$4> [package2 ...]" #format is Usage: command [optional args] <required arg1> <required arg2>.... [additional optional args]
+  if [ -n "$5" ]; then
+    echo -e "\n" # if there is additional usage info create a new line to seperate
+    echo "$5" # print the additional usage info provided by the args
+  fi
+}
 warning() {
   echo "WARNING: $*" 1>&2
 } # warning handler used for non-fatal issues; error() would be used for fatal issues
@@ -27,13 +34,7 @@ error() {
 remove() {
  rm $1 $2
 } # simple remove function for gprm and cleanup scripts
-usage() {
-  echo "Usage: $1 [$2] <$3> <$4> [package2 ...]" #format is Usage: command [optional args] <required arg1> <required arg2>.... [additional optional args]
-  if [ -n "$5" ]; then
-    echo -e "\n" # if there is additional usage info create a new line to seperate
-    echo "$5" # print the additional usage info provided by the args
-  fi
-}
+
 
 #init {
 #cd $2
@@ -47,8 +48,6 @@ source="/etc/update.d/"
 pkgloc="/usr/pkg/"
 pkgtext=".group"
 installfile="install.sh"
-
-export usage # export usage function so it can be used by subfuncs
 
 # Copyright 2026 Elias Stinson (favoriteone) and the FlowOS Development team
 # under the GNU GPL v3 license or later, see LICENSE for details.
