@@ -11,6 +11,5 @@ else
     shift
     for pkg in "$@"; do
         echo "Removing package $pkg from group $group..."
-        done
-    fi
+    done
 fi
