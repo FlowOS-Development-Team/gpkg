@@ -30,6 +30,10 @@ yesno() {
 }
 error() {
   echo "$1: There was an problem while during $2 on line $3, please report this to the gpkg issue board if you think this is a bug." >&2
+  if [ -n "$4" ]; then
+    echo "Additional info: $4" >&2
+  fi
+  exit 1;
 } # error handler used globally 
 remove() {
  rm $1 $2
