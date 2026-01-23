@@ -7,7 +7,7 @@ is_root
 info() {
     usage "gprm" "-f" "package-group" "package1" >&2 
  } # define usage function
-#helpext to be updated in a later beta version when there is a uni bin 
+#helptext to be updated in a later beta version when there is a uni bin 
 # Load flags
 while getopt "f" flag; do
     case "$flag" in
