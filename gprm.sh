@@ -9,8 +9,7 @@ info() {
  } # define usage function
 #helptext to be updated in a later beta version when there is a uni bin 
 # Load flags
-if [[ $# -eq 0 ]]; then
-    arg=false
+if [[ $# -eq 1 ]]; then
     while getopt "f" flag; do
     case "$flag" in
         f) FORCE="true" ;;
@@ -19,9 +18,8 @@ if [[ $# -eq 0 ]]; then
            exit 1 ;;
      esac
     done
-elif [[ $# -eq 1 ]]; then
-    arg=true
-else
+fi
+
 if [ -z "$1" ]; then
  echo "gprm: gitpkg remover requires a package group to delete from" >&2
  helpc
