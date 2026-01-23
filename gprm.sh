@@ -22,7 +22,7 @@ fi
 
 if [ -z "$1" ]; then
  echo "gprm: gitpkg remover requires a package group to delete from" >&2
- helpc
+ info
  quit; 
 elif [ -z "$2" ]; then
  echo "gprm: gitpkg remover requires (a) package(s) to remove file from" >&2
