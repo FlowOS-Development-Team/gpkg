@@ -48,5 +48,7 @@ pkgloc="/usr/pkg/"
 pkgtext=".group"
 installfile="install.sh"
 
+export usage # export usage function so it can be used by subfuncs
+
 # Copyright 2026 Elias Stinson (favoriteone) and the FlowOS Development team
 # under the GNU GPL v3 license or later, see LICENSE for details.
