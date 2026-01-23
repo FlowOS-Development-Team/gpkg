@@ -39,5 +39,4 @@ else
         remove "-f" "$pkg"
     done
 fi
-fi
 exit 0;
