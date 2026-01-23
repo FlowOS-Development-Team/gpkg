@@ -8,5 +8,8 @@ elif [ -z "$2" ]; then
 else
     group="$1"
     echo "Starting gpkg package removal......"
-    if 
+    shift
+    for pkg in "$@"; do
+        echo "Removing package '$pkg' from group '$group'..."
+    fi
 fi
