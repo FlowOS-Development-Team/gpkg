@@ -1,14 +1,15 @@
 #!/bin/bash
 # Functions and variables for GITPKG scripts
 
+# GPKG Global Functions -----
 warning() {
   echo "WARNING: $*" 1>&2
-}
+} # warning handler used for non-fatal issues; error() would be used for fatal issues
 is_root() {
   if [ "$(id -u)" -ne 0 ]; then
     warning "GITPKG scripts must be run as root."
     exit 1
-  fi
+  fi # basic root check to prevent permission issues and confusing errors
 }
 yesno() {
   while true; do
@@ -18,14 +19,22 @@ yesno() {
       [Nn]* ) return 1;;
       * ) echo "Please answer (Y)es or (N)o, other answers are not valid.";;
     esac
-  done
+  done # simple yes/no prompt function
 }
 error() {
   echo "$1: There was an problem while during $2 on line $3, please report this to the gpkg issue board if you think this is a bug." >&2
-}
+} # error handler used globally 
 remove() {
  rm $1 $2
+} # simple remove function for gprm and cleanup scripts
+usage() {
+  echo "Usage: $1 [$2] <$3> <$4> [package2 ...]" #format is Usage: command [optional args] <required arg1> <required arg2>.... [additional optional args]
+  if [ -n "$5" ]; then
+    echo -e "\n" # if there is additional usage info create a new line to seperate
+    echo "$5" # print the additional usage info provided by the args
+  fi
 }
+
 #init {
 #cd $2
 # name=$1
@@ -33,6 +42,7 @@ remove() {
 # echo "$INIT"
 #}
 
+# GPKG Global Variables -----
 source="/etc/update.d/"
 pkgloc="/usr/pkg/"
 pkgtext=".group"
