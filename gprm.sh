@@ -35,7 +35,7 @@ else
     for pkg in "$@"; do
         echo "Are you sure you want to delete $pkg? This action cannot be undone."
         #code yn code
-        echo "Removing package $pkg from group $group..."
+        echo "Removing package $pkg from group $group..." || error "gprm" "trying to delete $pkg" "36" "Try and check to see if you spelled the package group (and) or package name correctly?"
         remove "-f" "$pkg"
     done
 fi
