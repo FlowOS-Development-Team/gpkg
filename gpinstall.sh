@@ -1,11 +1,11 @@
 #!/bin/bash
 source "/etc/gpkg/env.sh"
-is_root()
 if [ -z "$1" ]; then
  echo "gpinstall: gitpkg installer requires a name" >&2
 elif [ -z "$2" ]; then
  echo "gpinstall: gitpkg installer requires a pack-group" >&2
 else
+is_root()
 # if [ -d !"$2" ]; then fix logic
    #while true; do
      #read -p "Folder for $2 does not exist, would you like to create it? (y/n): " yn
