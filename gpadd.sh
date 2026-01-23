@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail; shopt -s inherit_errexit nullglob compat"${BASH_COMPAT=42}"
 source "/etc/gpkg/env.sh"
-is_root()
+is_root
 if [ -z "$1" ]; then
  echo "gpadd: gitpkg group requires a name" >&2
 elif [ -z "$2" ]; then
