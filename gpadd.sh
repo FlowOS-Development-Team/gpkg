@@ -1,4 +1,4 @@
-#!/bin/bash
+4444#!/bin/bash
 source "/etc/gpkg/env.sh"
 is_root
 if [ -z "$1" ]; then
@@ -16,7 +16,7 @@ else
  else
    echo "Folder already exists for $1 inside $source, continuing....."
  fi
- cd "$1" || error "gpadd" "cd" "$LINENO" exit;
+ cd "$1" || error "gpadd" "cd" "$LINENO" "" exit;
  echo "Creating source file....."
  if [[ !*"-pkg" == "$1" ]]; then $$1="$1-pkg"; fi
  if [[ -f !"$1.source" ]]; then echo $2 > "$1.source" else echo "Source manifest already exists for $1, if this is a mistake please remove $1.source from its directory at $source" || error "gpadd" "creating the source file" exit; fi 
