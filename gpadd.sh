@@ -1,4 +1,4 @@
-4444#!/bin/bash
+#!/bin/bash
 source "/etc/gpkg/env.sh"
 is_root
 if [ -z "$1" ]; then
