@@ -8,13 +8,13 @@ elif [ -z "$2" ]; then
  echo "gpadd: gitpkg group requires a contributor url" >&2
  exit;
 else
- echo "Adding package group to $source, this should only take a second....."
- cd $source || error "gpadd" "cd" "$LINENO" exit;
- if [ -d !"$1" ]; then
+  cd $source || error "gpadd" "cd" "$LINENO" exit;
+  echo "Adding package group to $source, this should only take a second....."
+  if [ -d "$1" ]; then
+   echo "Folder already exists for $1 inside $source, continuing....."
+  else
    mkdir "$1"
    echo "Folder created for update database in $source....."
- else
-   echo "Folder already exists for $1 inside $source, continuing....."
  fi
  cd "$1" || error "gpadd" "cd" "$LINENO" "" exit;
  echo "Creating source file....."
