@@ -7,12 +7,7 @@ elif [ -z "$2" ]; then
  echo "gpinstall: gitpkg installer requires a pack-group" >&2
 else
 is_root()
-# if [ -d !"$2" ]; then fix logic
-   #while true; do
-     #read -p "Folder for $2 does not exist, would you like to create it? (y/n): " yn
-     #case $yn in
-       #[Yy]*  ) echo
- echo "Entering $source/$2, this should only take a second....."
+  echo "Entering $source/$2, this should only take a second....."
   if ! [ -d "$2" ]; then
      echo "Directory not found, assuming new package pack....."
      cd $pkgloc
